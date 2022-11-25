@@ -1,4 +1,4 @@
-package servicehelper
+package service
 
 import (
 	"time"

@@ -1,4 +1,4 @@
-package dbhelper
+package db
 
 import (
 	"fmt"
