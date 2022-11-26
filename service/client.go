@@ -9,8 +9,8 @@ import (
 	"github.com/smallnest/rpcx/protocol"
 	"github.com/spf13/viper"
 
-	"helper/commonhelper/errno"
-	"helper/commonhelper/logger"
+	"helper/common/errno"
+	"helper/common/logger"
 )
 
 type ServiceClient struct {

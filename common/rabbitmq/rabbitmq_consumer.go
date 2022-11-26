@@ -5,7 +5,7 @@ import (
 
 	"github.com/streadway/amqp"
 
-	"helper/commonhelper/logger"
+	"helper/common/logger"
 )
 
 type MqConsumer struct {

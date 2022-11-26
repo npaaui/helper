@@ -7,7 +7,7 @@ import (
 	"github.com/go-redis/redis"
 	"github.com/spf13/viper"
 
-	"helper/commonhelper/logger"
+	"helper/common/logger"
 )
 
 var redisConn *redis.Client

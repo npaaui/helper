@@ -1,9 +1,9 @@
 package {{.PackageName}}
 {{$exportModelName := .ModelName | FormatCamelcase}}
 import (
-	"helper/commonhelper/errno"
-	"helper/commonhelper/logger"
-	"helper/dbhelper"
+	"helper/common/errno"
+	"helper/common/logger"
+	"helper/db"
 )
 
 /**{{range .TableSchema}}
@@ -19,7 +19,7 @@ func New{{$exportModelName}}Model() *{{$exportModelName}} {
 }
 
 func (m *{{$exportModelName}}) Info() bool {
-	has, err := dbhelper.NewEngineInstance().Get(m)
+	has, err := db.NewEngineInstance().Get(m)
 	if err != nil {
 		logger.Instance.WithField("code", errno.ErrDatabase).Panicf("database err: %v", err)
 	}
@@ -27,7 +27,7 @@ func (m *{{$exportModelName}}) Info() bool {
 }
 
 func (m *{{$exportModelName}}) InfoAndMustCols(mustCol string) bool {
-	has, err := dbhelper.NewEngineInstance().MustCols(mustCol).Get(m)
+	has, err := db.NewEngineInstance().MustCols(mustCol).Get(m)
 	if err != nil {
 		logger.Instance.WithField("code", errno.ErrDatabase).Panicf("database err: %v", err)
 	}
@@ -35,7 +35,7 @@ func (m *{{$exportModelName}}) InfoAndMustCols(mustCol string) bool {
 }
 
 func (m *{{$exportModelName}}) Insert() int64 {
-	row, err := dbhelper.NewEngineInstance().Insert(m)
+	row, err := db.NewEngineInstance().Insert(m)
 	if err != nil {
 		logger.Instance.WithField("code", errno.ErrDatabase).Panicf("database err: %v", err)
 	}
@@ -43,7 +43,7 @@ func (m *{{$exportModelName}}) Insert() int64 {
 }
 
 func (m *{{$exportModelName}}) Update(arg *{{$exportModelName}}) int64 {
-	row, err := dbhelper.NewEngineInstance().Update(arg, m)
+	row, err := db.NewEngineInstance().Update(arg, m)
 	if err != nil {
 		logger.Instance.WithField("code", errno.ErrDatabase).Panicf("database err: %v", err)
 	}
@@ -51,7 +51,7 @@ func (m *{{$exportModelName}}) Update(arg *{{$exportModelName}}) int64 {
 }
 
 func (m *{{$exportModelName}}) Delete() int64 {
-	row, err := dbhelper.NewEngineInstance().Delete(m)
+	row, err := db.NewEngineInstance().Delete(m)
 	if err != nil {
 		logger.Instance.WithField("code", errno.ErrDatabase).Panicf("database err: %v", err)
 	}

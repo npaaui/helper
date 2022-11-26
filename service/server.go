@@ -8,8 +8,8 @@ import (
 	"github.com/smallnest/rpcx/server"
 	"github.com/spf13/viper"
 
-	"helper/commonhelper/errno"
-	"helper/commonhelper/logger"
+	"helper/common/errno"
+	"helper/common/logger"
 )
 
 type Reply struct {

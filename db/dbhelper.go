@@ -8,8 +8,8 @@ import (
 	"github.com/go-xorm/xorm"
 	"xorm.io/core"
 
-	"helper/commonhelper/errno"
-	"helper/commonhelper/logger"
+	"helper/common/errno"
+	"helper/common/logger"
 )
 
 type DbConnConf struct {
