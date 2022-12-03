@@ -31,13 +31,13 @@ func (s *ServiceClient) CallMapItf(method string, args interface{}) (map[string]
 func (s *ServiceClient) Call(method string, args interface{}) (interface{}, errno.CodeErr) {
 	reply, err := send(s.Name, method, args)
 	if err != nil {
-		logger.Instance.WithField("code", errno.ErrService).Panicf("error service call: %v.", err)
+		logger.Instance.WithField("code", errno.ErrService).Panicf("error %v call: %v.", s.Name, err)
 	}
 	return reply.Data, reply.CodeErr
 }
 
 func send(service, method string, args interface{}) (*Reply, error) {
-	d, err := etcdC.NewEtcdDiscovery("/etcdv3", service, []string{viper.GetString("etcd.url")}, true, nil)
+	d, err := etcdC.NewEtcdV3Discovery("/wappy", service, []string{viper.GetString("etcd.url")}, true, nil)
 	if err != nil {
 		return nil, err
 	}

@@ -22,10 +22,10 @@ func StartService(server *server.Server) {
 	etcdUrl := viper.GetString("etcd.url")
 
 	//etcd 注册中心
-	rplugin := &serverplugin.EtcdRegisterPlugin{
+	rplugin := &serverplugin.EtcdV3RegisterPlugin{
 		ServiceAddress: "tcp@" + address,
 		EtcdServers:    []string{etcdUrl},
-		BasePath:       "/etcdv3",
+		BasePath:       "/wappy",
 		Metrics:        metrics.NewRegistry(),
 		Services:       make([]string, 0),
 		UpdateInterval: 30 * time.Second,
