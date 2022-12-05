@@ -18,14 +18,14 @@ type Reply struct {
 }
 
 func StartService(server *server.Server) {
-	address := viper.GetString("service.host") + ":" + viper.GetString("service.port")
+	address := viper.GetString("etcd.pub_host")
 	etcdUrl := viper.GetString("etcd.url")
 
 	//etcd 注册中心
 	rplugin := &serverplugin.EtcdV3RegisterPlugin{
 		ServiceAddress: "tcp@" + address,
 		EtcdServers:    []string{etcdUrl},
-		BasePath:       "/wappy",
+		BasePath:       viper.GetString("etcd.pub_base_dir"),
 		Metrics:        metrics.NewRegistry(),
 		Services:       make([]string, 0),
 		UpdateInterval: 30 * time.Second,
