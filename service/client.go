@@ -37,7 +37,7 @@ func (s *ServiceClient) Call(method string, args interface{}) (interface{}, errn
 }
 
 func send(service, method string, args interface{}) (*Reply, error) {
-	d, err := etcdC.NewEtcdV3Discovery("/wappy", service, []string{viper.GetString("etcd.url")}, true, nil)
+	d, err := etcdC.NewEtcdV3Discovery(viper.GetString("etcd.base_dir"), service, []string{viper.GetString("etcd.url")}, true, nil)
 	if err != nil {
 		return nil, err
 	}
